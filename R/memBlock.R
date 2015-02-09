@@ -146,7 +146,12 @@ readMemBlock.mixedBlock <- function(block, file, offset) {
 
 readMemBlock.markedBlock <- function(block, file, offset) {
     markerBlock <- readBlock(block$marker, file)
-    markedBlock <- readBlock(block$switch(markerBlock), file)
-    list(marker=markerBlock, block=markedBlock)
+    nextBlock <- block$switch(markerBlock)
+    if (is.null(nextBlock)) {
+        list(marker=markerBlock)
+    } else {
+        markedBlock <- readBlock(nextBlock, file)
+        list(marker=markerBlock, block=markedBlock)
+    }
 }
 

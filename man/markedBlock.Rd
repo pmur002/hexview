@@ -14,7 +14,8 @@ markedBlock(marker=integer4,
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{marker}{ A \code{"memBlock"} object. }
-  \item{switch}{ A function that returns a \code{"memBlock"} object. }
+  \item{switch}{ A function that returns a \code{"memBlock"} object,
+    or \code{NULL}. }
 }
 \details{
   A \code{"markedBlock"} object describes a block of binary data that consists
@@ -22,11 +23,14 @@ markedBlock(marker=integer4,
   The \code{marker} block is read first, then this block is passed
   to the \code{switch} function.  The \code{switch} function
   can look at the contents of the \code{marker} block and decide
-  what sort of block should be read next.  The result of the
+  what sort of block should be read next (the \code{blockValue()}
+  function may be useful here).  The result of the
   \code{switch} function is read from the end of the \code{marker}
   block.  The \code{marker} block and the result of the \code{switch}
   function can be any type
-  of \code{"memBlock"} object.
+  of \code{"memBlock"} object.  If the result of the \code{switch()}
+  function is \code{NULL} then only the \code{marker} block is returned
+  (no further memory is read).
 }
 \value{
   A \code{"markedBlock"} object.
@@ -40,6 +44,7 @@ markedBlock(marker=integer4,
   \code{\link{vectorBlock}}
   \code{\link{lengthBlock}}
   \code{\link{mixedBlock}}
+  \code{\link{blockValue}}
 }
 \examples{
 # A single-byte integer which dictates how many
