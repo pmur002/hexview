@@ -1,0 +1,28 @@
+2014-12-17  Paul Murrell  <paul@stat.auckland.ac.nz>
+
+* eviews.R
+	Changed cat() to warning()
+
+2010-08-06  Paul Murrell  <paul@stat.auckland.ac.nz>
+
+* markedBlock.Rd
+	Added description of function arguments.
+
+2008-09-01  Paul Murrell  <paul@stat.auckland.ac.nz>
+
+* rawFormat.R
+	(as.character.rawFormat):
+	(as.character.flatRawFormat):
+	(print.rawFormat):
+	added arguments to allow customisation of headings
+	between blocks within format.
+
+
+2008-08-22  Paul Murrell  <paul@stat.auckland.ac.nz>
+
+* rawFormat.R
+	(as.character.flatRawFormat):
+	added code to cope with memFormat with no names specified.
+
+* NAMESPACE
+	exported default method for flattenBlock()

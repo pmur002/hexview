@@ -1,0 +1,38 @@
+
+export(blockValue)
+export(blockString)
+
+export(readRaw)
+export(viewRaw)
+
+export(ASCIIchar)
+export(integer1)
+export(integer2)
+export(integer4)
+export(integer8)
+export(real4)
+export(real8)
+export(memBlock)
+export(atomicBlock)
+export(vectorBlock)
+export(lengthBlock)
+export(ASCIIline)
+export(mixedBlock)
+export(markedBlock)
+export(memFormat)
+
+export(readFormat)
+export(viewFormat)
+
+export(hexViewFile)
+
+export(readEViews)
+
+S3method("print", "rawBlock")
+S3method("as.character", "rawBlock")
+
+S3method("print", "rawFormat")
+S3method("as.character", "rawFormat")
+
+S3method("flattenBlock", "default")
+S3method("flattenBlock", "rawBlock")
