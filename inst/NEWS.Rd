@@ -7,5 +7,8 @@
     \item Allow \code{switch()} function for \code{markedBlock()} to
     return \code{NULL} (in which case the markedBlock only returns the
     marker).
+    \item Include \code{Date} column in result if new \code{time.stamp}
+    argument to \code{readEViews()} is \code{TRUE}.  Code contributed
+    by Chao Bian.
   }
 }

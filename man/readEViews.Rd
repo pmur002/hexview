@@ -7,11 +7,13 @@
   an econometrics package).
 }
 \usage{
-readEViews(filename, as.data.frame = TRUE)
+readEViews(filename, time.stamp=TRUE, as.data.frame = TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{filename}{ The name of the file. }
+  \item{time.stamp}{ A logical indicating whether to include a
+    \code{Date} column in the result. }
   \item{as.data.frame}{ If \code{TRUE} the result is a data frame;
     otherwise a list of variables is returned. }
 }
