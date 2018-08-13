@@ -26,7 +26,7 @@ readFormat <- function(file,
         class(fileFormat) <- "rawFormat"
     }
     fileFormat$offset <- offset
-    fileFormat$nbytes <- fileSize - offset
+    fileFormat$nbytes <- seek(infile) - offset
     fileFormat
 }
 

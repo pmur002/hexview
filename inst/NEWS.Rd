@@ -10,5 +10,6 @@
     \item Include \code{Date} column in result if new \code{time.stamp}
     argument to \code{readEViews()} is \code{TRUE}.  Code contributed
     by Chao Bian.
+    \item Fix for \code{nbytes} value returned by \code{readFormat()}.
   }
 }
