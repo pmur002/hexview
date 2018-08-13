@@ -11,5 +11,6 @@
     argument to \code{readEViews()} is \code{TRUE}.  Code contributed
     by Chao Bian.
     \item Fix for \code{nbytes} value returned by \code{readFormat()}.
+    \item Added support for \code{integer3} memory blocks.
   }
 }

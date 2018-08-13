@@ -34,7 +34,16 @@ integer8 <- atomicBlock("int", size=8)
 real4 <- atomicBlock("real", size=4)
 real8 <- atomicBlock("real")
 
-
+## Needs special treatment because not natively supported
+## (in most places)
+integer3 <- function(width=NULL, machine="hex",
+                     endian="little", signed=TRUE) {
+    block <- list(type="int", width=width, machine=machine,
+                  size=3, endian=endian, signed=signed)
+    class(block) <- c("integer3", "atomicBlock", "memBlock")
+    block
+}
+    
 ASCIIline <- list()
 class(ASCIIline) <- c("ASCIIlineBlock", "memBlock")
 
@@ -101,6 +110,27 @@ readMemBlock.atomicBlock <- function(block, file, offset) {
     with(block,
          readRawBlock(file, width, machine, type, offset, size,
                       size, endian, signed))
+}
+
+readMemBlock.integer3 <- function(block, file, offset) {
+    ## Read as char ...
+    rawBlock <- with(block,
+                     readRawBlock(file, width, machine, "char", offset, size,
+                                  size, endian, signed))
+    ## ... then reset type and fill in numeric value
+    rawBlock$type <- "int"
+    ## Check sign
+    sign <- readBin(rawBlock$fileRaw, "integer", size=1)
+    if (sign < 0) {
+        ## Pad with FF
+        rawBlock$fileNum <- readBin(c(as.raw(2^8 - 1), rawBlock$fileRaw),
+                                    "integer", size=4, endian=block$endian)
+    } else {
+        ## Pad with 00
+        rawBlock$fileNum <- readBin(c(as.raw(0), rawBlock$fileRaw),
+                                    "integer", size=4, endian=block$endian)
+    }
+    rawBlock
 }
 
 readMemBlock.ASCIIlineBlock <- function(block, file, offset) {
