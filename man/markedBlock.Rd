@@ -9,13 +9,19 @@
 }
 \usage{
 markedBlock(marker=integer4,
-            switch=function(marker) { ASCIIchar })
+            switch=function(marker) { ASCIIchar },
+            markerLabel="marker", blockLabel="block")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{marker}{ A \code{"memBlock"} object. }
   \item{switch}{ A function that returns a \code{"memBlock"} object,
     or \code{NULL}. }
+  \item{markerLabel}{ A label to name the marker component of the
+    \code{"markedBlock"} object.}
+  \item{blockLabel}{ A label to name the component that is read
+    after the marker component of the
+    \code{"markedBlock"} object.}
 }
 \details{
   A \code{"markedBlock"} object describes a block of binary data that consists

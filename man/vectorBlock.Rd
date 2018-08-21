@@ -12,7 +12,7 @@
 }
 \usage{
 vectorBlock(block = ASCIIchar, length = 1)
-lengthBlock(length = integer4, block = ASCIIchar)
+lengthBlock(length = integer4, block = ASCIIchar, blockLabel = "block")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -20,6 +20,8 @@ lengthBlock(length = integer4, block = ASCIIchar)
     class, e.g., an \code{"atomicBlock"} object. }
   \item{length}{ The number of \code{block} objects in
     the overall binary block. }
+  \item{blockLabel}{ A label to name the block component of the
+    \code{"lengthBlock"} object.}
 }
 \details{
   These objects describe a block of binary data that consists

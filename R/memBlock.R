@@ -57,8 +57,10 @@ vectorBlock <- function(block=ASCIIchar,
 
 # Vector block preceded by a block which gives the length of the vector
 lengthBlock <- function(length=integer4,
-                        block=ASCIIchar) {
-    block <- list(block=block, length=length)
+                        block=ASCIIchar,
+                        blockLabel="block") {
+    block <- list(block=block, length=length,
+                  blockLabel=blockLabel)
     class(block) <- c("lengthBlock", "memBlock")
     block    
 }
@@ -72,8 +74,10 @@ mixedBlock <- function(...) {
 # A block marker encodes the block to follow
 # The switch function decodes the marker and determines the block
 markedBlock <- function(marker=integer4,
-                        switch=function(marker) { ASCIIchar }) {
-    block <- list(marker=marker, switch=switch)
+                        switch=function(marker) { ASCIIchar },
+                        markerLabel="marker", blockLabel="block") {
+    block <- list(marker=marker, switch=switch,
+                  markerLabel=markerLabel, blockLabel=blockLabel)
     class(block) <- c("markedBlock", "memBlock")
     block    
 }
@@ -167,7 +171,9 @@ readMemBlock.lengthBlock <- function(block, file, offset) {
     offset <- seek(file, where=NA)
     vecBlock <- readVectorBlock(block$block, blockValue(lengthBlock),
                                 file, offset)
-    list(length=lengthBlock, vector=vecBlock)
+    result <- list(lengthBlock, vecBlock)
+    names(result) <- c("length", block$blockLabel)
+    result
 }
 
 readMemBlock.mixedBlock <- function(block, file, offset) {
@@ -178,10 +184,13 @@ readMemBlock.markedBlock <- function(block, file, offset) {
     markerBlock <- readBlock(block$marker, file)
     nextBlock <- block$switch(markerBlock)
     if (is.null(nextBlock)) {
-        list(marker=markerBlock)
+        result <- list(markerBlock)
+        names(result) <- block$markerLabel
     } else {
         markedBlock <- readBlock(nextBlock, file)
-        list(marker=markerBlock, block=markedBlock)
+        result <- list(markerBlock, markedBlock)
+        names(result) <- c(block$markerLabel, block$blockLabel)
     }
+    result
 }
 

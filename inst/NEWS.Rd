@@ -12,5 +12,8 @@
     by Chao Bian.
     \item Fix for \code{nbytes} value returned by \code{readFormat()}.
     \item Added support for \code{integer3} memory blocks.
+    \item Added arguments to \code{lengthBlock()} and
+    \code{markedBlock()} so that the user can specify labels for
+    the results of reading in these memory blocks.
   }
 }
