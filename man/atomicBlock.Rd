@@ -3,6 +3,7 @@
 \alias{ASCIIchar}
 \alias{integer1}
 \alias{integer2}
+\alias{integer3}
 \alias{integer4}
 \alias{integer8}
 \alias{real4}
@@ -43,6 +44,7 @@ atomicBlock(type = "char", width = NULL, machine = "hex",
   \code{ASCIIchar} (char),
   \code{integer1} (signed char),
   \code{integer2} (short),
+  \code{integer3},
   \code{integer4} (int, long),
   \code{integer8} (long long),
   \code{real4} (float),
