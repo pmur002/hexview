@@ -1,5 +1,5 @@
 Package: hexView
-Version: 0.3-4
+Version: 0.3-5
 Title: Viewing Binary Files
 Authors@R: c(person("Paul", "Murrell", role = c("aut", "cre"),
 		     email = "paul@stat.auckland.ac.nz"),

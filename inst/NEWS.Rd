@@ -2,6 +2,12 @@
 \title{NEWS file for the hexView package}
 \encoding{UTF-8}
 
+\section{Changes in version 0.3-5}{
+  \itemize{
+    \item Add numeric index to names of each item within vector blocks.
+  }
+}
+
 \section{Changes in version 0.3-4}{
   \itemize{
     \item Allow \code{switch()} function for \code{markedBlock()} to

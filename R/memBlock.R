@@ -158,6 +158,7 @@ readVectorBlock.default <- function(block, length, file, offset) {
     for (i in 1:length) {
         result[[i]] <- readBlock(block, file)
     }
+    names(result) <- 1:length
     result
 }
 
