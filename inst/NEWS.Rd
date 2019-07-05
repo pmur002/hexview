@@ -5,6 +5,9 @@
 \section{Changes in version 0.3-5}{
   \itemize{
     \item Add numeric index to names of each item within vector blocks.
+    
+    \item Allow readFormat() to work with open connection (as well as a
+    filename).
   }
 }
 
